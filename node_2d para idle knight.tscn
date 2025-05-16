@@ -174,3 +174,5 @@ position_smoothing_enabled = true
 [node name="Bone2D" type="Bone2D" parent="Player/Camera2D"]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="AnimationTree"]
