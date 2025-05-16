@@ -172,3 +172,5 @@ shape = SubResource("RectangleShape2D_wwha0")
 position_smoothing_enabled = true
 
 [node name="Bone2D" type="Bone2D" parent="Player/Camera2D"]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
