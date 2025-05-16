@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://djuvfaxlj6pwo"]
+[gd_scene load_steps=7 format=3 uid="uid://djuvfaxlj6pwo"]
 
+[ext_resource type="Script" uid="uid://b33wg2nuxwx7e" path="res://world_generator_gd.gd" id="1_1d7n3"]
 [ext_resource type="Texture2D" uid="uid://y8b7ycksprlk" path="res://tile_0000.png" id="1_j7hed"]
 [ext_resource type="Texture2D" uid="uid://crwkemw51sl32" path="res://tileset.png" id="2_1d7n3"]
 
@@ -149,6 +150,10 @@ size = Vector2(20, 23.5)
 
 [node name="Main" type="Node2D"]
 position = Vector2(464, -12)
+
+[node name="WorldGenerator_gd" type="Node2D" parent="."]
+position = Vector2(-11, 12)
+script = ExtResource("1_1d7n3")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(238, -2)
