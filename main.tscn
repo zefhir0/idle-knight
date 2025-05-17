@@ -12,8 +12,8 @@
 motion_scale = Vector2(0.5, 0.5)
 
 [node name="TextureRect" type="TextureRect" parent="Parallax2D/ParallaxLayer"]
+texture_repeat = 2
 offset_left = -1115.0
-offset_top = -1852.0
 offset_right = 3190.0
 offset_bottom = 240.0
 texture = ExtResource("1_ig7tw")
