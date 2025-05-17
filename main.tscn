@@ -11,5 +11,10 @@
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D"]
 motion_scale = Vector2(0.5, 0.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxLayer"]
+[node name="TextureRect" type="TextureRect" parent="Parallax2D/ParallaxLayer"]
+offset_left = -1115.0
+offset_top = -1852.0
+offset_right = 3190.0
+offset_bottom = 240.0
 texture = ExtResource("1_ig7tw")
+stretch_mode = 1
