@@ -1,6 +1,24 @@
-[gd_scene format=3 uid="uid://b0xk3c4g87cbc"]
+[gd_scene load_steps=3 format=3 uid="uid://b0xk3c4g87cbc"]
+
+[ext_resource type="Texture2D" uid="uid://blgf2ma3qju6" path="res://back.png" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://b0wd2pqambp8b" path="res://personaje/player.tscn" id="2_0xm2m"]
 
 [node name="main" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
-format = 2
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D/ParallaxLayer"]
+texture_repeat = 2
+offset_left = -1115.0
+offset_right = 3190.0
+offset_bottom = 240.0
+texture = ExtResource("1_ig7tw")
+stretch_mode = 1
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(404, 220)
