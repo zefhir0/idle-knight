@@ -1,6 +1,15 @@
-[gd_scene format=3 uid="uid://b0xk3c4g87cbc"]
+[gd_scene load_steps=2 format=3 uid="uid://b0xk3c4g87cbc"]
+
+[ext_resource type="Texture2D" uid="uid://blgf2ma3qju6" path="res://back.png" id="1_ig7tw"]
 
 [node name="main" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
-format = 2
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxLayer"]
+texture = ExtResource("1_ig7tw")
