@@ -11,12 +11,9 @@ config_version=5
 [application]
 
 config/name="Idle knight"
-<<<<<<< HEAD
 run/main_scene="uid://b0wd2pqambp8b"
-=======
-run/main_scene="uid://b0xk3c4g87cbc"
->>>>>>> b10487a61ad8436fe069c2291e3ac4a8696a88f8
 config/features=PackedStringArray("4.4", "Mobile")
+<<<<<<<HEADrun/main_scene="uid://b0wd2pqambp8b"
 
 [display]
 

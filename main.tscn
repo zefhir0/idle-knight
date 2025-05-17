@@ -1,12 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0xk3c4g87cbc"]
 
 [ext_resource type="Texture2D" uid="uid://blgf2ma3qju6" path="res://back.png" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://b0wd2pqambp8b" path="res://personaje/player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://b0wd2pqambp8b" path="res://Assets/personaje/player.tscn" id="2_0xm2m"]
 
 [node name="main" type="Node2D"]
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(404, 220)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -22,3 +19,6 @@ offset_right = 3190.0
 offset_bottom = 240.0
 texture = ExtResource("1_ig7tw")
 stretch_mode = 1
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(491, 217)
