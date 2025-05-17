@@ -1,24 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0xk3c4g87cbc"]
+[gd_scene load_steps=4 format=3 uid="uid://b0xk3c4g87cbc"]
 
+[ext_resource type="Script" uid="uid://bp1w32pjb5437" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://blgf2ma3qju6" path="res://back.png" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b0wd2pqambp8b" path="res://Assets/personaje/player.tscn" id="2_0xm2m"]
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_h2yge")
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D"]
+[node name="montañas" type="Parallax2D" parent="ParallaxBackground"]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/montañas"]
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 1
+
+[node name="Vegetacion" type="Parallax2D" parent="ParallaxBackground"]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Vegetacion"]
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 1
+
+[node name="cielo" type="Parallax2D" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground/cielo"]
 motion_scale = Vector2(0.5, 0.5)
 
-[node name="TextureRect" type="TextureRect" parent="Parallax2D/ParallaxLayer"]
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/cielo/ParallaxLayer"]
 texture_repeat = 2
-offset_left = -1115.0
-offset_right = 3190.0
-offset_bottom = 240.0
+offset_left = -1083.0
+offset_top = -223.0
+offset_right = 3222.0
+offset_bottom = 17.0
 texture = ExtResource("1_ig7tw")
 stretch_mode = 1
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(168, 218)
+up_direction = Vector2(0.00116279, 0.999999)
 
 [node name="Camera2D2" type="Camera2D" parent="CharacterBody2D"]
