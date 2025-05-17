@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Idle knight"
+config/name="Idle Knight"
 run/main_scene="uid://b0wd2pqambp8b"
-config/name = "Idle Knight"
+config/features=PackedStringArray("4.4")
 <<<<<<<HEADrun/main_scene="uid://b0wd2pqambp8b"
 
 [display]
