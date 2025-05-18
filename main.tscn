@@ -179,6 +179,7 @@ tile_set = SubResource("TileSet_7mycd")
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 
 [node name="Camera2D" parent="Player" index="2"]
-zoom = Vector2(5, 5)
+offset = Vector2(60, -95)
+zoom = Vector2(8, 3)
 
 [editable path="Player"]
