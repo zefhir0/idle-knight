@@ -11,12 +11,11 @@ config_version=5
 [application]
 
 config/name="Idle Knight"
-run/main_scene="uid://b0wd2pqambp8b"
+run/main_scene="uid://b0xk3c4g87cbc"
 config/features=PackedStringArray("4.4")
 <<<<<<<HEADrun/main_scene="uid://b0wd2pqambp8b"
 
 [display]
 
-window/size/viewport_width=1600
-window/size/viewport_height=900
-window/size/mode=2
+window/size/viewport_width=720
+window/size/viewport_height=1280
