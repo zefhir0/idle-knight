@@ -1,52 +1,52 @@
 extends CharacterBody2D
 
 @export var speed: float = 100.0
+@export var jump_force: float = 300.0
+@export var gravity: float = 800.0
 var sprite: AnimatedSprite2D
 
-# Asegúrate de que la cámara esté en la jerarquía del personaje en la escena
 @onready var camera: Camera2D = $Camera2D
-
-# Distancia máxima entre la cámara y el jugador en X (para evitar que la cámara se "adelante" demasiado)
 @export var max_camera_distance: float = 100.0
-
-# Factor de zoom para la cámara
-@export var zoom_factor: float = 3  # Puedes ajustar este valor para acercar o alejar la cámara
+@export var zoom_factor: float = 3
 
 func _ready():
 	sprite = $AnimatedSprite2D
-	sprite.play("run")  # Inicia la animación de correr
-	
-	# Asegura que la cámara esté activa y siga al personaje
-	camera.make_current()  # Hace que esta cámara sea la cámara activa
-	
-	# Aplica el zoom a la cámara usando el factor exportado
-	camera.zoom = Vector2(10 / zoom_factor, 10 / zoom_factor)  # Esto debería hacer el zoom correctamente
+	sprite.play("run")
+	camera.make_current()
+	camera.zoom = Vector2(10 / zoom_factor, 10 / zoom_factor)
 
-func _physics_process(_delta):
-	# Movimiento automático hacia la derecha (dirección positiva en X)
-	velocity.x = speed  # Puedes modificar la velocidad para ajustar el comportamiento
+func _physics_process(delta):
+	# Aplicar gravedad
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	elif velocity.y > 0:
+		velocity.y = 0
 
-	# Si tu juego tiene gravedad o plataformas, puedes añadir la lógica de gravedad aquí
-	if is_on_floor():
-		velocity.y = 0  # Resetea la velocidad en Y si el personaje está en el suelo
+	# Saltar si está en el suelo
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = -jump_force
 
-	# Mueve al personaje aplicando la física
+	# Movimiento lateral automático
+	velocity.x = speed
+
+	# Mover al personaje usando la propiedad velocity interna
 	move_and_slide()
 
-	# Opcionalmente, actualiza la animación del sprite (asegurándose de que "run" esté en reproducción)
-	if not sprite.is_playing() or sprite.animation != "run":
-		sprite.play("run")
+	# Animaciones
+	if not is_on_floor():
+		if velocity.y < 0:
+			sprite.play("jump")
+		else:
+			sprite.play("fall")
+	else:
+		if not sprite.is_playing() or sprite.animation != "run":
+			sprite.play("run")
 
-	# La cámara debe seguir al personaje en X
+	# Cámara
 	var target_position = position
-
-	# Ajustar la cámara en X, limitando su distancia máxima al jugador.
 	var camera_offset_x = camera.position.x - target_position.x
 
-	# Si la cámara está demasiado lejos en X, ajustamos su posición para que no se "adelante"
 	if abs(camera_offset_x) > max_camera_distance:
-		# Si la cámara está demasiado lejos en X, ajustamos su posición
 		target_position.x = camera.position.x - sign(camera_offset_x) * max_camera_distance
 
-	# Limita la posición de la cámara en el eje X para evitar que se adelante demasiado
 	camera.position = target_position

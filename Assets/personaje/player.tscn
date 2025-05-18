@@ -1,12 +1,26 @@
-[gd_scene load_steps=26 format=3 uid="uid://b0wd2pqambp8b"]
+[gd_scene load_steps=34 format=3 uid="uid://b0wd2pqambp8b"]
 
 [ext_resource type="Texture2D" uid="uid://1vfsqg8jqa70" path="res://Assets/personaje/Colour1/NoOutline/120x80_PNGSheets/_Idle.png" id="1_mw786"]
 [ext_resource type="Script" uid="uid://domwy3l6ihkp8" path="res://Assets/personaje/player.gd" id="1_nxxp6"]
+[ext_resource type="Texture2D" uid="uid://dgtvy4o5b0d38" path="res://Assets/personaje/Colour1/NoOutline/120x80_PNGSheets/_Fall.png" id="2_7txuy"]
 [ext_resource type="Texture2D" uid="uid://rvi66gdyt2py" path="res://Assets/personaje/Colour1/NoOutline/120x80_PNGSheets/_Run.png" id="2_nxxp6"]
+[ext_resource type="Texture2D" uid="uid://ylxikt0icuw5" path="res://Assets/personaje/Colour1/NoOutline/120x80_PNGSheets/_Jump.png" id="4_pp5gb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lur2a"]
 radius = 9.0
 height = 36.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmyb1"]
+atlas = ExtResource("2_7txuy")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lihue"]
+atlas = ExtResource("2_7txuy")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h81rh"]
+atlas = ExtResource("2_7txuy")
+region = Rect2(240, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qhg3"]
 atlas = ExtResource("1_mw786")
@@ -47,6 +61,18 @@ region = Rect2(960, 0, 120, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7th7"]
 atlas = ExtResource("1_mw786")
 region = Rect2(1080, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnwye"]
+atlas = ExtResource("4_pp5gb")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkqlw"]
+atlas = ExtResource("4_pp5gb")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_segyk"]
+atlas = ExtResource("4_pp5gb")
+region = Rect2(240, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qc21h"]
 atlas = ExtResource("2_nxxp6")
@@ -92,6 +118,20 @@ region = Rect2(1080, 0, 120, 80)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_pmyb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lihue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h81rh")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4qhg3")
 }, {
 "duration": 1.0,
@@ -127,6 +167,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_nnwye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkqlw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_segyk")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_qc21h")
 }, {
 "duration": 1.0,
@@ -158,7 +212,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -173,7 +227,9 @@ texture_filter = 1
 position = Vector2(5, -21.5)
 scale = Vector2(1, 0.9125)
 sprite_frames = SubResource("SpriteFrames_iq6pt")
-animation = &"idle"
+animation = &"run"
+frame_progress = 0.929092
 
 [node name="Camera2D" type="Camera2D" parent="."]
-ignore_rotation = false
+offset = Vector2(60, -95)
+zoom = Vector2(8, 3)
